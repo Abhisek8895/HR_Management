@@ -1,0 +1,73 @@
+:root {
+    --hr-primary: #0d6efd;
+    --hr-primary-dark: #0a4fb3;
+    --hr-primary-darker: #083d8a;
+    --hr-bg: #f4f7fc;
+    --hr-text: #1f2d3d;
+}
+
+body {
+    font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    background-color: var(--hr-bg);
+    color: var(--hr-text);
+}
+
+.bg-hr-primary {
+    background-color: var(--hr-primary-dark) !important;
+}
+
+.brand-mark {
+    display: inline-block;
+    background: #fff;
+    color: var(--hr-primary-dark);
+    font-weight: 700;
+    border-radius: 6px;
+    padding: 0 8px;
+    margin-right: 6px;
+}
+
+/* Landing page */
+.hero {
+    background: linear-gradient(135deg, var(--hr-primary) 0%, var(--hr-primary-darker) 100%);
+}
+
+.hero-card {
+    background: #fff;
+    color: var(--hr-text);
+    border-radius: 16px;
+    padding: 24px;
+}
+
+.stat-box {
+    background: var(--hr-bg);
+    border-radius: 12px;
+    padding: 16px;
+}
+
+.stat-number {
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--hr-primary-dark);
+}
+
+.feature-card {
+    border-radius: 14px;
+    transition: transform 0.15s ease;
+}
+
+.feature-card:hover {
+    transform: translateY(-4px);
+}
+
+.feature-icon {
+    width: 48px;
+    height: 48px;
+    border-radius: 12px;
+    background: #e7f0ff;
+    color: var(--hr-primary-dark);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.4rem;
+    font-weight: 700;
+}

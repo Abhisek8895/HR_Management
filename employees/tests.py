@@ -9,7 +9,7 @@ from django.db import IntegrityError, transaction
 from django.test import TestCase
 
 from .models import Employee
-
+from django.urls import reverse
 
 class EmployeeModelTests(TestCase):
     def setUp(self):
@@ -61,3 +61,18 @@ class EmployeeModelTests(TestCase):
         emp = Employee(**{**self.data, 'department': 'XYZ'})
         with self.assertRaises(ValidationError):
             emp.full_clean()
+
+class LandingPageTests(TestCase):
+    def test_landing_page_loads(self):
+        response = self.client.get(reverse('landing'))
+        self.assertEqual(response.status_code, 200)
+        self.assertTemplateUsed(response, 'landing.html')
+        self.assertTemplateUsed(response, 'base.html')
+
+    def test_landing_page_has_login_button(self):
+        response = self.client.get(reverse('landing'))
+        self.assertContains(response, 'Login')
+
+    def test_landing_page_is_responsive(self):
+        response = self.client.get(reverse('landing'))
+        self.assertContains(response, 'name="viewport"')

@@ -1,0 +1,102 @@
+{% extends 'base.html' %}
+
+{% block title %}HR Management System | Welcome{% endblock %}
+
+{% block body %}
+<nav class="navbar navbar-expand-lg navbar-dark bg-hr-primary">
+    <div class="container">
+        <a class="navbar-brand fw-semibold" href="{% url 'landing' %}">
+            <span class="brand-mark">HR</span> Management System
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                data-bs-target="#landingNav" aria-controls="landingNav"
+                aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="landingNav">
+            <ul class="navbar-nav ms-auto align-items-lg-center gap-lg-2">
+                <li class="nav-item"><a class="nav-link" href="#features">Features</a></li>
+                <li class="nav-item">
+                    <a class="btn btn-light btn-sm px-3" href="#">Login</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<header class="hero text-white">
+    <div class="container py-5">
+        <div class="row align-items-center py-lg-5">
+            <div class="col-lg-7 text-center text-lg-start">
+                <h1 class="display-4 fw-bold mb-3">Manage your people with confidence</h1>
+                <p class="lead mb-4">
+                    A simple, secure HR Management System to register employees,
+                    keep their records up to date, and see your workforce at a glance.
+                </p>
+                <a href="#" class="btn btn-light btn-lg px-4 me-2">Login</a>
+                <a href="#features" class="btn btn-outline-light btn-lg px-4">Learn more</a>
+            </div>
+            <div class="col-lg-5 d-none d-lg-block">
+                <div class="hero-card shadow-lg">
+                    <div class="d-flex justify-content-between mb-3">
+                        <span class="fw-semibold">Dashboard preview</span>
+                        <span class="badge bg-primary">Live</span>
+                    </div>
+                    <div class="row g-3 text-center">
+                        <div class="col-6">
+                            <div class="stat-box"><div class="stat-number">128</div><div class="small text-muted">Employees</div></div>
+                        </div>
+                        <div class="col-6">
+                            <div class="stat-box"><div class="stat-number">7</div><div class="small text-muted">Departments</div></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+<section id="features" class="py-5 bg-white">
+    <div class="container py-4">
+        <div class="text-center mb-5">
+            <h2 class="fw-bold">Everything you need to manage employees</h2>
+            <p class="text-muted">Core HR tools, kept deliberately simple.</p>
+        </div>
+        <div class="row g-4">
+            <div class="col-md-4">
+                <div class="card feature-card h-100 border-0 shadow-sm">
+                    <div class="card-body p-4">
+                        <div class="feature-icon mb-3">+</div>
+                        <h5 class="card-title">Employee registration</h5>
+                        <p class="card-text text-muted">Add new hires with validated details and no duplicate email addresses.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card feature-card h-100 border-0 shadow-sm">
+                    <div class="card-body p-4">
+                        <div class="feature-icon mb-3">&#9776;</div>
+                        <h5 class="card-title">Employee directory</h5>
+                        <p class="card-text text-muted">View, edit and remove employee records from one clear, responsive table.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card feature-card h-100 border-0 shadow-sm">
+                    <div class="card-body p-4">
+                        <div class="feature-icon mb-3">&#9632;</div>
+                        <h5 class="card-title">Dashboard overview</h5>
+                        <p class="card-text text-muted">Track total employees and departments at a glance after you sign in.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<footer class="bg-hr-primary text-white-50 py-4">
+    <div class="container text-center small">
+        &copy; {% now "Y" %} HR Management System. All rights reserved.
+    </div>
+</footer>
+{% endblock %}
