@@ -1,0 +1,19 @@
+# Virtual environment
+venv/
+.venv/
+env/
+
+# Python
+__pycache__/
+*.py[cod]
+
+# Environment secrets
+.env
+
+# Database (local dev)
+db.sqlite3
+
+# OS / editor
+.DS_Store
+.vscode/
+.idea/
