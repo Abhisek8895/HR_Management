@@ -10,6 +10,7 @@ from django.test import TestCase
 
 from .models import Employee
 from django.urls import reverse
+from django.contrib.auth import get_user_model
 
 class EmployeeModelTests(TestCase):
     def setUp(self):
@@ -76,3 +77,59 @@ class LandingPageTests(TestCase):
     def test_landing_page_is_responsive(self):
         response = self.client.get(reverse('landing'))
         self.assertContains(response, 'name="viewport"')
+
+class AuthenticationTests(TestCase):
+    def setUp(self):
+        self.username = 'hruser'
+        self.password = 'StrongPass123!'
+        self.user = get_user_model().objects.create_user(
+            username=self.username, password=self.password
+        )
+
+    def test_login_page_loads(self):
+        response = self.client.get(reverse('login'))
+        self.assertEqual(response.status_code, 200)
+        self.assertTemplateUsed(response, 'login.html')
+
+    def test_valid_login_redirects_to_dashboard(self):
+        response = self.client.post(
+            reverse('login'),
+            {'username': self.username, 'password': self.password},
+        )
+        self.assertRedirects(response, reverse('dashboard'))
+
+    def test_invalid_login_shows_error(self):
+        response = self.client.post(
+            reverse('login'),
+            {'username': self.username, 'password': 'wrong-password'},
+        )
+        self.assertEqual(response.status_code, 200)
+        self.assertContains(response, 'Please enter a correct username and password')
+
+    def test_authenticated_user_redirected_from_login(self):
+        self.client.login(username=self.username, password=self.password)
+        response = self.client.get(reverse('login'))
+        self.assertRedirects(response, reverse('dashboard'))
+
+    def test_dashboard_requires_login(self):
+        response = self.client.get(reverse('dashboard'))
+        self.assertRedirects(
+            response, f"{reverse('login')}?next={reverse('dashboard')}"
+        )
+
+    def test_dashboard_accessible_when_logged_in(self):
+        self.client.login(username=self.username, password=self.password)
+        response = self.client.get(reverse('dashboard'))
+        self.assertEqual(response.status_code, 200)
+
+    def test_logout_via_post(self):
+        self.client.login(username=self.username, password=self.password)
+        response = self.client.post(reverse('logout'))
+        self.assertRedirects(response, reverse('login'))
+        response = self.client.get(reverse('dashboard'))
+        self.assertEqual(response.status_code, 302)
+
+    def test_logout_via_get_not_allowed(self):
+        self.client.login(username=self.username, password=self.password)
+        response = self.client.get(reverse('logout'))
+        self.assertEqual(response.status_code, 405)

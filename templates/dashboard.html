@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+{% block title %}Dashboard | HR Management System{% endblock %}
+
+{% block body %}
+<nav class="navbar navbar-dark bg-hr-primary">
+    <div class="container">
+        <span class="navbar-brand fw-semibold">HR Management System</span>
+        <form method="post" action="{% url 'logout' %}" class="d-flex">
+            {% csrf_token %}
+            <button type="submit" class="btn btn-light btn-sm">Logout</button>
+        </form>
+    </div>
+</nav>
+
+<div class="container py-4">
+    {% include 'includes/messages.html' %}
+    <h1 class="h3">Welcome, {{ user.username }}</h1>
+    <p class="text-muted">Dashboard coming in Task 5.</p>
+</div>
+{% endblock %}

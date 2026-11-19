@@ -17,7 +17,7 @@
             <ul class="navbar-nav ms-auto align-items-lg-center gap-lg-2">
                 <li class="nav-item"><a class="nav-link" href="#features">Features</a></li>
                 <li class="nav-item">
-                    <a class="btn btn-light btn-sm px-3" href="#">Login</a>
+                    <a class="btn btn-light btn-sm px-3" href="{% url 'login' %}">Login</a>
                 </li>
             </ul>
         </div>
@@ -33,7 +33,7 @@
                     A simple, secure HR Management System to register employees,
                     keep their records up to date, and see your workforce at a glance.
                 </p>
-                <a href="#" class="btn btn-light btn-lg px-4 me-2">Login</a>
+                <a href="{% url 'login' %}" class="btn btn-light btn-lg px-4 me-2">Login</a>
                 <a href="#features" class="btn btn-outline-light btn-lg px-4">Learn more</a>
             </div>
             <div class="col-lg-5 d-none d-lg-block">

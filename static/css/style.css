@@ -71,3 +71,22 @@ body {
     font-size: 1.4rem;
     font-weight: 700;
 }
+/* Login page */
+.login-page {
+    background: linear-gradient(135deg, var(--hr-primary) 0%, var(--hr-primary-darker) 100%);
+}
+
+.login-card {
+    width: 100%;
+    max-width: 420px;
+    border-radius: 16px;
+}
+
+.brand-mark-lg {
+    background: var(--hr-primary-dark);
+    color: #fff;
+    font-size: 1.5rem;
+    padding: 6px 16px;
+    border-radius: 10px;
+    margin-right: 0;
+}
